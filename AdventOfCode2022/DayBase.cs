@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Net.Http;
 
-namespace AdventOfCode2021
+namespace AdventOfCode2022
 {
     public abstract class DayBase
     {

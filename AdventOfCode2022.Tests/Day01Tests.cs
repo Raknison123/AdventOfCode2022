@@ -1,8 +1,8 @@
-using AdventOfCode2021.Solutions;
+using AdventOfCode2022.Solutions;
 using NUnit.Framework;
 using System;
 
-namespace AdventOfCode2021.Tests
+namespace AdventOfCode2022.Tests
 {
     public class Day01Tests
     {

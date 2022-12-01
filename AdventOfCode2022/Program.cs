@@ -1,7 +1,7 @@
-﻿using AdventOfCode2021.Solutions;
+﻿using AdventOfCode2022.Solutions;
 using System;
 
-namespace AdventOfCode2021
+namespace AdventOfCode2022
 {
     class Program
     {

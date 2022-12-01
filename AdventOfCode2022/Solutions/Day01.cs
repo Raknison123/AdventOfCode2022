@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AdventOfCode2021.Solutions
+namespace AdventOfCode2022.Solutions
 {
     public class Day01 : DayBase
     {
@@ -17,7 +17,6 @@ namespace AdventOfCode2021.Solutions
 
         protected override object SolvePart1()
         {
-
             return _elvesCalories.Max();
         }
 
