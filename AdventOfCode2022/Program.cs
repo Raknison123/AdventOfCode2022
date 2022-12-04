@@ -7,7 +7,7 @@ namespace AdventOfCode2022
     {
         static void Main(string[] args)
         {
-            var puzzle = new Day03();
+            var puzzle = new Day04();
             Console.WriteLine($"{puzzle.GetType().Name} - Part1:{puzzle.Part1}, Part2:{puzzle.Part2}");
             Console.ReadKey();
         }
