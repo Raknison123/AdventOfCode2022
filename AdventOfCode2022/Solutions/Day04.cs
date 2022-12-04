@@ -38,22 +38,22 @@ namespace AdventOfCode2022.Solutions
     {
         public static bool OverlapsAssignment(this string firstAssignment, string secondAssignment, bool mustFullyContainedBy)
         {
-            var (firstAssignmFrom, firstAssignmTo) = ParseAssignment(firstAssignment);
-            var (secondAssignmFrom, secondAssignmTo) = ParseAssignment(secondAssignment);
+            var (firstFrom, firstTo) = ParseAssignment(firstAssignment);
+            var (secondFrom, secondTo) = ParseAssignment(secondAssignment);
 
             bool overlaps;
             if (mustFullyContainedBy)
             {
-                overlaps = secondAssignmFrom >= firstAssignmFrom &&
-                           secondAssignmTo <= firstAssignmTo &&
-                           secondAssignmTo >= firstAssignmFrom;
+                overlaps = secondFrom >= firstFrom &&
+                           secondTo <= firstTo &&
+                           secondTo >= firstFrom;
             }
             else
             {
-                overlaps = secondAssignmFrom >= firstAssignmFrom &&
-                           secondAssignmTo <= firstAssignmTo ||
-                           secondAssignmTo >= firstAssignmFrom &&
-                           secondAssignmTo <= firstAssignmTo;
+                overlaps = secondFrom >= firstFrom &&
+                           secondTo <= firstTo ||
+                           secondTo >= firstFrom &&
+                           secondTo <= firstTo;
             }
 
             return overlaps;
