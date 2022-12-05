@@ -66,10 +66,9 @@ namespace AdventOfCode2022.Solutions
             for (int i = stackDefinition.Count - 2; i >= 0; i--)
             {
                 var stackRow = stackDefinition[i];
-                var stackId = 0;
                 for (int j = 1; j < stackRow.Length; j += 4)
                 {
-                    stackId++;
+                    var stackId = j / 4 + 1;
                     var crate = stackRow[j];
                     if (!char.IsWhiteSpace(crate) &&
                         !_stacks.TryAdd(stackId, new Stack<char>(new List<char> { crate })))
