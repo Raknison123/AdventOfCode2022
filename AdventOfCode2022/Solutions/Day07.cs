@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AdventOfCode2022.Solutions
 {
@@ -16,20 +15,21 @@ namespace AdventOfCode2022.Solutions
         protected override object SolvePart1()
         {
             var folderSizes = new List<int>();
-            CalculateFolderSize(_folderStructure, folderSizes);
+            FindFoldersWithSizeSmallerThanThreshold(_folderStructure, 100000, folderSizes);
 
             return folderSizes.Sum();
         }
 
-        private int CalculateFolderSize(Folder folder, List<int> resultSizes)
+        private int FindFoldersWithSizeSmallerThanThreshold(Folder folder, int threshold, List<int> resultSizes)
         {
             var size = folder.Files.Select(f => f.Size).Sum();
             foreach (var subFolder in folder.SubFolders)
             {
-                size += CalculateFolderSize(subFolder, resultSizes);
+                size += FindFoldersWithSizeSmallerThanThreshold(subFolder, 100000, resultSizes);
             }
 
-            if (size <= 100000)
+            // Here we know the current folder size (including all content from subfolders
+            if (size <= threshold)
             {
                 resultSizes.Add(size);
             }
@@ -41,7 +41,7 @@ namespace AdventOfCode2022.Solutions
         {
             var totalDiskSpace = 70000000;
             var freeSpaceNeeded = 30000000;
-            var spaceUsed = CalculateFolderSize(_folderStructure, new List<int>());
+            var spaceUsed = FindFoldersWithSizeSmallerThanThreshold(_folderStructure, 0, new List<int>());
             var maxDiskUsageAllowed = spaceUsed + freeSpaceNeeded - totalDiskSpace;
 
             var resultSizes = new List<int>();
@@ -72,7 +72,7 @@ namespace AdventOfCode2022.Solutions
 
             foreach (var row in Input)
             {
-                if (row.StartsWith('$'))
+                if (row.StartsWith('$')) // It's a command
                 {
                     var command = row.Split("$ ")[1].Split(" ");
                     if (command[0] == "cd")
@@ -90,7 +90,7 @@ namespace AdventOfCode2022.Solutions
                 else
                 {
                     var splitted = row.Split(" ");
-                    if (splitted[0] == "dir")
+                    if (splitted[0] == "dir") // It's a folder
                     {
                         if (!currentFolder.SubFolders.Any(s => s.Name == splitted[1]))
                         {
@@ -101,7 +101,7 @@ namespace AdventOfCode2022.Solutions
                             currentFolder.SubFolders.Add(subFolder);
                         }
                     }
-                    else
+                    else // It's a file
                     {
                         currentFolder.Files.Add(new File { Name = splitted[1], Size = Convert.ToInt32(splitted[0]) });
                     }
