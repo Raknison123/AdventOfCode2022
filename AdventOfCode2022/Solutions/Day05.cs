@@ -7,7 +7,7 @@ namespace AdventOfCode2022.Solutions
 {
     public class Day05 : DayBase
     {
-        private readonly Dictionary<int, Stack<char>> _stacks = new Dictionary<int, Stack<char>>();
+        private readonly Dictionary<int, Stack<char>> _stacks = new();
 
         public Day05(string input = null) : base(input)
         {
