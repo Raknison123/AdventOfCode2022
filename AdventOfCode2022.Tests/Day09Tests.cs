@@ -23,17 +23,6 @@ R 2");
         [Test]
         public void SolvePart2_SmallExample_ReturnsCorrectValue()
         {
-//            var dayX = new Day09(@"R 4
-//U 4
-//L 3
-//D 1
-//R 4
-//D 1
-//L 5
-//R 2");
-
-//            Assert.AreEqual(1, dayX.Part2);
-
             var dayY = new Day09(@"R 5
 U 8
 L 8
